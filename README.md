@@ -18,10 +18,10 @@ It is a native app developed in Kotlin, with the following technologies:
 - TensorflowLite
 
 <h3 align="left">
-  <img align="left" width="200" src="https://github.com/laclave96/pos-app/blob/main/screenshots/1.jpg">
-  <img align="center" width="200" src="https://github.com/laclave96/pos-app/blob/main/screenshots/2.jpg">
-  <img align="center" width="200" src="https://github.com/laclave96/pos-app/blob/main/screenshots/3.jpg">
-  <img align="center" width="200" src="https://github.com/laclave96/pos-app/blob/main/screenshots/4.jpg">
-  <img align="center" width="200" src="https://github.com/laclave96/pos-app/blob/main/screenshots/5.jpg">
+  <img align="left" width="200" src="https://github.com/laclave96/face-scan/blob/main/screenshots/1.jpg">
+  <img align="center" width="200" src="https://github.com/laclave96/face-scan/blob/main/screenshots/2.jpg">
+  <img align="center" width="200" src="https://github.com/laclave96/face-scan/blob/main/screenshots/3.jpg">
+  <img align="center" width="200" src="https://github.com/laclave96/face-scan/blob/main/screenshots/4.jpg">
+  <img align="center" width="200" src="https://github.com/laclave96/face-scan/blob/main/screenshots/5.jpg">
 
 </h3>
