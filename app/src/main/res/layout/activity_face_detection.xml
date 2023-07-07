@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.savent.recognition.face.presentation.viewmodel.FaceDetectionViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".presentation.activity.FaceDetectionActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp"
+            android:foreground="@drawable/ripple_10dp"
+            android:background="@drawable/stroke_back_10dp"
+            android:backgroundTint="@color/gray_243"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="20dp"
+            >
+
+            <ImageView
+                android:id="@+id/back_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_round_arrow_back_ios_24"
+                android:tint="@color/dark_blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/remote_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="25dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:foreground="@drawable/ripple_10dp"
+            android:background="@drawable/stroke_back_10dp"
+            android:backgroundTint="@color/gray_243"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toBottomOf="@id/back"
+            android:onClick="takePicture">
+
+            <ImageView
+                android:id="@+id/person_search_icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_round_search_24"
+                android:tint="@color/dark_blue"
+                app:layout_constraintStart_toEndOf="@id/remote_search_tv"
+                app:layout_constraintBottom_toBottomOf="@id/remote_search_tv"
+                />
+
+            <TextView
+                android:id="@+id/remote_search_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comforta_bold"
+                android:textColor="@color/dark_blue"
+                android:text="@string/identify"
+                android:textSize="19sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/back"
+            android:layout_marginTop="30dp"
+            app:riv_corner_radius="15dp" />
+
+        <com.savent.recognition.face.detectionutils.GraphicOverlay
+            android:id="@+id/graphic_overlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/preview"
+            app:layout_constraintTop_toTopOf="@id/preview"
+            app:layout_constraintStart_toStartOf="@id/preview"
+            app:layout_constraintEnd_toEndOf="@id/preview"
+             />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/progress"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:lottie_rawRes="@raw/loading"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:translationZ="5dp"
+            android:visibility="gone"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/see_detected_faces"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:foreground="@drawable/ripple_20dp"
+            android:background="@drawable/white_back_20dp"
+            android:backgroundTint="@color/gray_243"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintTop_toBottomOf="@id/preview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/face_scan_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/face_id"
+                android:tint="@color/black"
+                android:layout_marginStart="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/company_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/company_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comforta_bold"
+                android:textColor="@color/black"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/see_detected_faces"
+                android:textSize="17sp"
+                app:layout_constraintStart_toEndOf="@id/face_scan_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/face_scan_icon"
+                />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/take_picture_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:foreground="@drawable/ripple_20dp"
+            android:background="@drawable/white_back_20dp"
+            android:backgroundTint="@color/gray_243"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="25dp"
+            android:onClick="takePicture">
+
+            <ImageView
+                android:id="@+id/camera_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/camera_fill"
+                android:tint="@color/dark_blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="18dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="9dp"
+            android:paddingBottom="9dp"
+            android:foreground="@drawable/ripple_10dp"
+            android:background="@drawable/stroke_back_10dp"
+            android:backgroundTint="@color/gray_243"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="15dp"
+            >
+
+            <TextView
+                android:id="@+id/next_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comforta_bold"
+                android:text="@string/next"
+                android:textColor="@color/dark_blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/next_icon"
+                android:textSize="22sp"/>
+
+            <ImageView
+                android:id="@+id/next_icon"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_round_arrow_forward_24"
+                android:tint="@color/dark_blue"
+               app:layout_constraintStart_toEndOf="@id/next_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
